@@ -11,6 +11,29 @@ def main():
     )
 
     parser.add_argument(
+        'g',
+        '--generate',
+        action='store_true',
+        default=False,
+        dest='generar',
+    )
+
+    parser.add_argument(
+        'path-app',
+        action='store_true',
+        default=False,
+        dest='path_app',
+    )
+
+    parser.add_argument(
+        '-cv',
+        '--create-view',
+        action='store_true',
+        dest='view',
+        help='crear una vista'
+    )
+
+    parser.add_argument(
         '-n',
         '--nombre',
         action='store',
@@ -25,14 +48,6 @@ def main():
         action='store',
         dest='nombre_plural',
         help='Nombre plural'
-    )
-
-    parser.add_argument(
-        '-cv',
-        '--create-view',
-        action='store_true',
-        dest='view',
-        help='crear una vista'
     )
 
     parser.add_argument(
