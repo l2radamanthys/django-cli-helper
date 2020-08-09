@@ -41,6 +41,14 @@ def main():
         dest='admin',
         help='crear un admin-class'
     )
+    
+    parser.add_argument(
+        '-cs',
+        '--create-serializer',
+        action='store_true',
+        dest='serializer',
+        help='crear un serializer'
+    )
 
     parser.add_argument(
         '-n',
@@ -92,9 +100,13 @@ def main():
     if args.admin:
         handler.crear_admin_class(args.app_name, args.nombre, nombre_plural)
 
+    if args.serializer:
+        handler.crear_serializer(args.app_name, args.nombre, nombre_plural)
+
     if args.generar:
         handler.crear_admin_class(args.app_name, args.nombre, nombre_plural)
         handler.crear_modelo(args.app_name, args.nombre, nombre_plural)
+        handler.crear_serializer(args.app_name, args.nombre, nombre_plural)
         handler.crear_vista(args.app_name, args.nombre, nombre_plural)
 
     print()
