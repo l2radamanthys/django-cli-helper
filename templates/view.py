@@ -1,10 +1,9 @@
 from rest_framework import viewsets
-
-from aplicacion.models.modelo import %modelo%
-from aplicacion.serializers.modelo import %modelo%Serializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 from rest_framework import permissions
+from %app%.models.%nombre_archivo% import %modelo%
+from %app%.serializers.%nombre_archivo% import %modelo%Serializer
 
 class %modelo%ViewSet(viewsets.ModelViewSet):
     queryset = %modelo%.objects.all()

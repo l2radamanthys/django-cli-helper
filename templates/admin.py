@@ -1,5 +1,5 @@
 from django.contrib import admin
-from series.models.series import Serie
+from %app%.models.%nombre_archivo% import %modelo%
 
 
 class %modelo%Admin(admin.ModelAdmin):

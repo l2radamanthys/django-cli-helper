@@ -36,7 +36,6 @@ def blank_file(file_path):
     open(file_path, 'a').close()
 
 
-
 class View:
     """
         View parse class
@@ -55,6 +54,7 @@ class View:
                     value = data.get(token, None)
                     if value != None:
                         token = '%' + token + '%'
+                    # print(":", line, token, value)
                     line = line.replace(token, value)
             result.append(line)
         return result

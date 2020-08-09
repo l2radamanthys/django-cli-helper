@@ -11,18 +11,11 @@ def main():
     )
 
     parser.add_argument(
-        'g',
+        '-g',
         '--generate',
         action='store_true',
         default=False,
         dest='generar',
-    )
-
-    parser.add_argument(
-        'path-app',
-        action='store_true',
-        default=False,
-        dest='path_app',
     )
 
     parser.add_argument(
@@ -31,6 +24,22 @@ def main():
         action='store_true',
         dest='view',
         help='crear una vista'
+    )
+
+    parser.add_argument(
+        '-cm',
+        '--create-model',
+        action='store_true',
+        dest='model',
+        help='crear un modelo'
+    )
+    
+    parser.add_argument(
+        '-ca',
+        '--create-admin-class',
+        action='store_true',
+        dest='admin',
+        help='crear un admin-class'
     )
 
     parser.add_argument(
@@ -75,6 +84,17 @@ def main():
         nombre_plural = args.nombre
 
     if args.view:
+        handler.crear_vista(args.app_name, args.nombre, nombre_plural)
+
+    if args.model:
+        handler.crear_modelo(args.app_name, args.nombre, nombre_plural)
+    
+    if args.admin:
+        handler.crear_admin_class(args.app_name, args.nombre, nombre_plural)
+
+    if args.generar:
+        handler.crear_admin_class(args.app_name, args.nombre, nombre_plural)
+        handler.crear_modelo(args.app_name, args.nombre, nombre_plural)
         handler.crear_vista(args.app_name, args.nombre, nombre_plural)
 
     print()
