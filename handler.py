@@ -80,3 +80,46 @@ def crear_serializer(app, nombre, nombre_plural):
     print(f"\nAGREGADO: {partial_output_path}\n")
     print(f"from {app}.{component_}.{nombre_archivo} import {nombre}\n")
     print()
+
+def touch(fname):
+    if os.path.exists(fname):
+        os.utime(fname, None)
+    else:
+        open(fname, 'a').close()
+
+def actualizar_estructura_app(app):
+    carpetas = [
+        'admin_class',
+        'tests',
+        'models',
+        'serializers',
+        'views',
+        'jobs',
+        'signals',
+    ]
+    borrar = [
+        'models.py',
+        'views.py',
+        'tests.py'
+    ]
+
+    if not os.path.exists(app):
+        raise Exception(f'Error, no se encontro la app: {app}')
+    
+    for archivo in borrar:
+        path = os.path.join(app, archivo)
+        if os.path.exists(path):
+            os.remove(path)
+            print(f'Quitado {path}')
+
+    for carpeta in carpetas:
+        path = os.path.join(app, carpeta)
+        if os.path.isdir(path):
+            print(f'Omitido, ya existe el directorio, {path}')
+        else:
+            os.mkdir(path)
+            touch(os.path.join(path, '__init__.py'))
+            print(f'Agregado {path}')
+            print(f'Agregado {path}/__init__.py')
+
+    

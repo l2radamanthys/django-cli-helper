@@ -75,14 +75,23 @@ def main():
         help='nombre de la aplicación'
     )
 
+    parser.add_argument(
+        '-aa',
+        '--actualizar-app',
+        action='store',
+        default=False,
+        dest='actualizar_estructura',
+        help='Actualizar estructura de la app'
+    )
+
     args = parser.parse_args()
     nombre_plural = None
 
-    if not args.nombre:
+    if not args.actualizar_estructura and not args.nombre:
         print("Error falta parametro -n nombre")
         return -1
 
-    if not args.app_name:
+    if not args.actualizar_estructura and not args.app_name:
         print("Error falta parametro -a app")
         return -1
 
@@ -108,6 +117,9 @@ def main():
         handler.crear_modelo(args.app_name, args.nombre, nombre_plural)
         handler.crear_serializer(args.app_name, args.nombre, nombre_plural)
         handler.crear_vista(args.app_name, args.nombre, nombre_plural)
+
+    if args.actualizar_estructura:
+        handler.actualizar_estructura_app(args.actualizar_estructura)
 
     print()
 

@@ -18,7 +18,6 @@ def get_tokens(text):
     else:
         return []
 
-
 def to_pascal(text):
     """
         comvierte camel case en notacion pascal
@@ -28,13 +27,11 @@ def to_pascal(text):
 def pascal_case(text):
     return ''.join(x for x in text.title() if not x.isspace())
 
-
 def blank_file(file_path):
     """
         Crea un archivo en blanco
     """
     open(file_path, 'a').close()
-
 
 class View:
     """
@@ -43,7 +40,6 @@ class View:
     def __init__(self, template_path):
         # self.template_name = template_name
         self.template = open(template_path, 'r').readlines()
-
 
     def build(self, data):
         result = []
@@ -58,7 +54,6 @@ class View:
                     line = line.replace(token, value)
             result.append(line)
         return result
-
 
     def build_and_save(self, data, output_name):
         result = self.build(data)
