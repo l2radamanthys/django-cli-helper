@@ -7,24 +7,24 @@ Utilidad para generar extructura compatible con Django-REST-Frameworks
 
 #### Actualizar estructura de la app
 
-	python3 dch.py -aa {nombre_app}
+	python3 cli.py -aa {nombre_app}
 
 #### Generar arbol del modelo
 
-	python3 dch.py -g -a {nombre_app} -n {nombre_modelo} -np {nombre_prural}
+	python3 cli.py -g -a {nombre_app} -n {nombre_modelo} -np {nombre_prural}
 	
-#### Crear extructura del modelo
+#### Crear Modelo
 	
-	python3 dch.py -cm -a {nombre_app} -n {nombre_modelo} -np {nombre_prural}
+	python3 cli.py -cm -a {nombre_app} -n {nombre_modelo} -np {nombre_prural}
 	
 #### Crear Vista
 	
-	python3 dch.py -cv -a {nombre_app} -n {nombre_modelo} -np {nombre_prural}
+	python3 cli.py -cv -a {nombre_app} -n {nombre_modelo} -np {nombre_prural}
 	
 #### Crear Admin class
 	
-	python3 dch.py -ca -a {nombre_app} -n {nombre_modelo} -np {nombre_prural}
+	python3 cli.py -ca -a {nombre_app} -n {nombre_modelo} -np {nombre_prural}
 	
 #### Crear Serializer
 
-	python3 dch.py -cs -a {nombre_app} -n {nombre_modelo} -np {nombre_prural}
+	python3 cli.py -cs -a {nombre_app} -n {nombre_modelo} -np {nombre_prural}
