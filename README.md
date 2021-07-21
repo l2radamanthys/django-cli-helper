@@ -7,7 +7,7 @@ Utilidad para generar extructura compatible con Django-REST-Frameworks
 
 #### Actualizar estructura de la app
 
-	python3 dch.py --aa {nombre_app}
+	python3 dch.py -aa {nombre_app}
 
 #### Generar arbol del modelo
 

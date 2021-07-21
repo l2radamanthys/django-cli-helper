@@ -50,8 +50,10 @@ class View:
                     value = data.get(token, None)
                     if value != None:
                         token = '%' + token + '%'
-                    # print(":", line, token, value)
-                    line = line.replace(token, value)
+                    try:
+                        line = line.replace(token, value)
+                    except TypeError:
+                        print("Error al reemplazar:", "\n\t", line.strip(), f"\n\t{token} -> {value}")
             result.append(line)
         return result
 

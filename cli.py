@@ -2,8 +2,7 @@ import argparse
 import handler
 
 
-current_version = 'v0.0.1'
-
+current_version = 'v0.0.2'
 
 def main():
     parser = argparse.ArgumentParser(
@@ -40,6 +39,14 @@ def main():
         action='store_true',
         dest='admin',
         help='crear un admin-class'
+    )
+
+    parser.add_argument(
+        '-ct',
+        '--create-test-class',
+        action='store_true',
+        dest='test',
+        help='crear un test-class'
     )
     
     parser.add_argument(
@@ -85,7 +92,7 @@ def main():
     )
 
     args = parser.parse_args()
-    nombre_plural = None
+    print()
 
     if not args.actualizar_estructura and not args.nombre:
         print("Error falta parametro -n nombre")
@@ -95,28 +102,31 @@ def main():
         print("Error falta parametro -a app")
         return -1
 
-    if args.nombre_plural:
-        nombre_plural = args.nombre_plural
-    else:
-        nombre_plural = args.nombre
+    if not args.actualizar_estructura and not args.nombre_plural:
+        print("Error falta parametro -np nombre_plural")
+        return -1
 
     if args.view:
-        handler.crear_vista(args.app_name, args.nombre, nombre_plural)
+        handler.crear_vista(args.app_name, args.nombre, args.nombre_plural)
 
     if args.model:
-        handler.crear_modelo(args.app_name, args.nombre, nombre_plural)
+        handler.crear_modelo(args.app_name, args.nombre, args.nombre_plural)
     
     if args.admin:
-        handler.crear_admin_class(args.app_name, args.nombre, nombre_plural)
+        handler.crear_admin_class(args.app_name, args.nombre, args.nombre_plural)
 
     if args.serializer:
-        handler.crear_serializer(args.app_name, args.nombre, nombre_plural)
+        handler.crear_serializer(args.app_name, args.nombre, args.nombre_plural)
+
+    if args.test:
+        handler.crear_test(args.app_name, args.nombre, args.nombre_plural)
 
     if args.generar:
-        handler.crear_admin_class(args.app_name, args.nombre, nombre_plural)
-        handler.crear_modelo(args.app_name, args.nombre, nombre_plural)
-        handler.crear_serializer(args.app_name, args.nombre, nombre_plural)
-        handler.crear_vista(args.app_name, args.nombre, nombre_plural)
+        handler.crear_admin_class(args.app_name, args.nombre, args.nombre_plural)
+        handler.crear_modelo(args.app_name, args.nombre, args.nombre_plural)
+        handler.crear_serializer(args.app_name, args.nombre, args.nombre_plural)
+        handler.crear_vista(args.app_name, args.nombre, args.nombre_plural)
+        handler.crear_test(args.app_name, args.nombre, args.nombre_plural)
 
     if args.actualizar_estructura:
         handler.actualizar_estructura_app(args.actualizar_estructura)
