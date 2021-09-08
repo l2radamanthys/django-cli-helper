@@ -5,6 +5,7 @@ from rest_framework import permissions
 from %app%.models.%nombre_archivo% import %modelo%
 from %app%.serializers.%nombre_archivo% import %modelo%Serializer
 
+
 class %modelo%ViewSet(viewsets.ModelViewSet):
     queryset = %modelo%.objects.all()
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

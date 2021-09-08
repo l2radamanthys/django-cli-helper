@@ -3,7 +3,7 @@ from rest_framework.test import APITestCase
 from %app%.models.%nombre_plural% import %modelo%
 
 
-class API%modelo%TestCase(ApiTestCase):
+class API%modelo%TestCase(APITestCase):
     def setUp(self):
         pass
 

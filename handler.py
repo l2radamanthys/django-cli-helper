@@ -98,9 +98,10 @@ def crear_serializer(app, nombre, nombre_plural):
 def crear_test(app, nombre, nombre_plural):
     nombre_archivo = nombre_plural.replace('-', ' ').replace('_', ' ')
     nombre_archivo = simple_view.pascal_case(nombre_archivo)
+    nombre_plural_ = nombre_archivo
     nombre_archivo = "test_api_" + simple_view.to_pascal(nombre_archivo)
-    modelo_url = nombre_archivo.replace("_", "-")
-    
+    modelo_url = nombre_plural_.replace("_", "-")
+
     data = {
         'modelo': nombre,
         'nombre_archivo': nombre_archivo,
