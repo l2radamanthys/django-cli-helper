@@ -99,16 +99,19 @@ def crear_test(app, nombre, nombre_plural):
     nombre_archivo = nombre_plural.replace('-', ' ').replace('_', ' ')
     nombre_archivo = simple_view.pascal_case(nombre_archivo)
     nombre_plural_ = nombre_archivo
-    nombre_archivo = "test_api_" + simple_view.to_pascal(nombre_archivo)
-    modelo_url = nombre_plural_.replace("_", "-")
+    nombre_modelo = simple_view.to_pascal(nombre_archivo)
+    nombre_archivo = "test_api_" + nombre_modelo
+    modelo_url = nombre_plural_.replace("_", "-").lower()
 
     data = {
         'modelo': nombre,
         'nombre_archivo': nombre_archivo,
-        'nombre_plural': nombre_archivo,
+        'nombre_modelo': nombre_modelo,
+        'nombre_plural': nombre_plural_,
         'modelo_url': modelo_url,
         'app': app
     }
+
     component_ = 'tests'
     validar_carpeta(call_path)
     validar_carpeta(os.path.join(call_path, app))
@@ -119,6 +122,7 @@ def crear_test(app, nombre, nombre_plural):
     view.build_and_save(data, output_path)
     print(f"AGREGADO: {partial_output_path}")
     #print(f"from {app}.{component_}.{nombre_archivo} import {nombre}")
+
 
 
 def touch(fname):

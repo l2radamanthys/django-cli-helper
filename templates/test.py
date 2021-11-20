@@ -1,6 +1,5 @@
 from rest_framework.test import APITestCase
-
-from %app%.models.%nombre_plural% import %modelo%
+from %app%.models.%nombre_modelo% import %modelo%
 
 
 class API%modelo%TestCase(APITestCase):
